@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pylab as pl
 
-def prettyPicture(clf, X_test, y_test, image_name):
+def prettyPicture(clf, X_test, y_test, image_name=""):
     x_min = 0.0; x_max = 1.0
     y_min = 0.0; y_max = 1.0
     

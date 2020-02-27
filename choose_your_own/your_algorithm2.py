@@ -44,13 +44,13 @@ from sklearn.metrics import accuracy_score
 clf = KNeighborsClassifier(n_neighbors=8, weights="distance")
 clf.fit(features_train, labels_train)
 acc = accuracy_score(clf.predict(features_test), labels_test)  ### you fill this in!
-prettyPicture(clf, features_test, labels_test)
+prettyPicture(clf, features_test, labels_test, "KNNClassifier")
 print ("Accuracy Of KNearestClassifier() is ", acc)
 
 clf = RandomForestClassifier(n_estimators=25, criterion="gini", max_depth=3, min_samples_split=20, max_leaf_nodes=25)
 clf.fit(features_train, labels_train)
 acc = accuracy_score(clf.predict(features_test), labels_test)  ### you fill this in!
-prettyPicture(clf, features_test, labels_test)
+prettyPicture(clf, features_test, labels_test, "RandomForestClassifier")
 print ("Accuracy Of RandomForestClassifier() is ", acc)
 
 clf = AdaBoostClassifier(
@@ -58,11 +58,19 @@ clf = AdaBoostClassifier(
 )
 clf.fit(features_train, labels_train)
 acc = accuracy_score(clf.predict(features_test), labels_test)  ### you fill this in!
-prettyPicture(clf, features_test, labels_test)
+prettyPicture(clf, features_test, labels_test, "AdaBoostClassifier")
 print ("Accuracy Of AdaBoostClassifier() is ", acc)
 
 
+clf = DecisionTreeClassifier(min_samples_split=40)
+clf.fit(features_train, labels_train)
+acc = accuracy_score(clf.predict(features_test), labels_test)  ### you fill this in!
+prettyPicture(clf, features_test, labels_test, "DecisionTreeClassifier")
+print ("Accuracy Of DecisionTreeClassifier() is ", acc)
+
+'''
 try:
     prettyPicture(clf, features_test, labels_test)
 except NameError:
     pass
+'''

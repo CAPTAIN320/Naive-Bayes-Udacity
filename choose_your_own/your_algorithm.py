@@ -75,6 +75,7 @@ for n_estimators in range(1, 20):
 					clf = RandomForestClassifier(**kwargs)
 					clf.fit(features_train, labels_train)
 					pred = clf.predict(features_test)
+					prettyPicture(clf, features_test, labels_test, "RandomForestClassifier")
 
 					if accuracy_score(labels_test, pred) > best_accuracy_score:
 						best_accuracy_score = accuracy_score(labels_test, pred)
@@ -97,7 +98,8 @@ for n_estimators in range(40, 70):
 		clf = AdaBoostClassifier(**kwargs)
 		clf.fit(features_train, labels_train)
 		pred = clf.predict(features_test)
-
+		prettyPicture(clf, features_test, labels_test, "AdaBoostClassifier")
+		
 		if accuracy_score(labels_test, pred) > best_accuracy_score:
 			best_accuracy_score = accuracy_score(labels_test, pred)
 			best_kwargs = kwargs
@@ -125,6 +127,7 @@ for n_neighbors in range(1, 11):
 				clf = KNeighborsClassifier(**kwargs)
 				clf.fit(features_train, labels_train)
 				pred = clf.predict(features_test)
+				prettyPicture(clf, features_test, labels_test, "KNNClassifier")
 
 				if accuracy_score(labels_test, pred) > best_accuracy_score:
 					best_accuracy_score = accuracy_score(labels_test, pred)
@@ -139,6 +142,7 @@ kwargs = None
 clf = GaussianNB()
 clf.fit(features_train, labels_train)
 pred = clf.predict(features_test)
+prettyPicture(clf, features_test, labels_test, "NaiveBayesClassifier")
 
 if accuracy_score(labels_test, pred) > best_accuracy_score:
 	best_accuracy_score = accuracy_score(labels_test, pred)
@@ -169,6 +173,7 @@ for C in np.arange(1.0, 3.5, 0.5):
 				clf = SVC(**kwargs)
 				clf.fit(features_train, labels_train)
 				pred = clf.predict(features_test)
+				prettyPicture(clf, features_test, labels_test, "SVMClassifier")
 
 				if accuracy_score(labels_test, pred) > best_accuracy_score:
 					best_accuracy_score = accuracy_score(labels_test, pred)
@@ -182,7 +187,9 @@ print("Accuracy:", best_accuracy_score)
 
 print ("total time:", round(time()-t0, 3), "s")
 
+'''
 try:
     prettyPicture(clf, features_test, labels_test)
 except NameError:
     pass
+'''
