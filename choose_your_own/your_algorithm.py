@@ -75,13 +75,14 @@ for n_estimators in range(1, 20):
 					clf = RandomForestClassifier(**kwargs)
 					clf.fit(features_train, labels_train)
 					pred = clf.predict(features_test)
-					prettyPicture(clf, features_test, labels_test, "RandomForestClassifier")
 
 					if accuracy_score(labels_test, pred) > best_accuracy_score:
 						best_accuracy_score = accuracy_score(labels_test, pred)
 						best_kwargs = kwargs
 						best_algorithm = 'RandomForest'
 						best_clf = clf
+
+prettyPicture(clf, features_test, labels_test, "RandomForestClassifier")
 
 # Train AdaBoost Classifier 
 
@@ -98,13 +99,14 @@ for n_estimators in range(40, 70):
 		clf = AdaBoostClassifier(**kwargs)
 		clf.fit(features_train, labels_train)
 		pred = clf.predict(features_test)
-		prettyPicture(clf, features_test, labels_test, "AdaBoostClassifier")
 		
 		if accuracy_score(labels_test, pred) > best_accuracy_score:
 			best_accuracy_score = accuracy_score(labels_test, pred)
 			best_kwargs = kwargs
 			best_algorithm = 'AdaBoost'
 			best_clf = clf
+
+prettyPicture(clf, features_test, labels_test, "AdaBoostClassifier")
 
 # Train k-Nearest Neighbors Classifier
 
@@ -127,13 +129,14 @@ for n_neighbors in range(1, 11):
 				clf = KNeighborsClassifier(**kwargs)
 				clf.fit(features_train, labels_train)
 				pred = clf.predict(features_test)
-				prettyPicture(clf, features_test, labels_test, "KNNClassifier")
-
+				
 				if accuracy_score(labels_test, pred) > best_accuracy_score:
 					best_accuracy_score = accuracy_score(labels_test, pred)
 					best_kwargs = kwargs
 					best_algorithm = 'KNeighbors'
 					best_clf = clf
+
+prettyPicture(clf, features_test, labels_test, "KNNClassifier")
 
 # Train Naive Bayes Classifier
 
@@ -173,13 +176,14 @@ for C in np.arange(1.0, 3.5, 0.5):
 				clf = SVC(**kwargs)
 				clf.fit(features_train, labels_train)
 				pred = clf.predict(features_test)
-				prettyPicture(clf, features_test, labels_test, "SVMClassifier")
 
 				if accuracy_score(labels_test, pred) > best_accuracy_score:
 					best_accuracy_score = accuracy_score(labels_test, pred)
 					best_kwargs = kwargs
 					best_algorithm = 'SVC'
 					best_clf = clf
+
+prettyPicture(clf, features_test, labels_test, "SVMClassifier")
 
 print("The best classifier is", best_algorithm)
 print("With parameters:\n", best_kwargs)
